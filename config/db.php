@@ -1,13 +1,12 @@
 <?php
+$host = 'localhost';
+$dbname = 'sistemacobros';
+$username = 'root';
+$password = '';
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "sistemacobros";
-
-
-$conexion = mysqli_connect($host, $user, $password, $database);
-if (!$conexion) {
-    echo "No se realizo la conexion a la basa de datos, el error fue:" .
-        mysqli_connect_error();
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Error en la conexión: " . $e->getMessage());
 }

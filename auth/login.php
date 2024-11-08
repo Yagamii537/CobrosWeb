@@ -1,10 +1,6 @@
 <?php
-// Incluir la configuración de base de datos y el controlador de autenticación
-include '../config/db.php';
+include '../config/db.php';            // Conexión a la base de datos con $pdo
 include '../controllers/AuthController.php';
 
-// Crear una instancia del controlador de autenticación
-$authController = new AuthController($conexion);
-
-// Llamar a la función de acceso del usuario
+$authController = new AuthController($pdo);
 $authController->accesoUser();

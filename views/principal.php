@@ -7,41 +7,31 @@
 
     <div class="row">
 
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-6 col-sm-6">
             <div class="card text-center">
                 <div class="card-body">
                     <i class="bi bi-people-fill display-4 text-primary"></i>
-                    <h5 class="card-title">Usuarios</h5>
-                    <p class="card-text">Administra y gestiona los usuarios del sistema.</p>
-                    <a href="recibo.php" class="btn btn-primary">Ir a Usuarios</a>
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">Administra y gestiona los clientes del sistema.</p>
+                    <a href="clientes/index.php" class="btn btn-primary">Aceptar</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-6 col-sm-6">
             <div class="card text-center">
                 <div class="card-body">
-                    <i class="bi bi-file-earmark-text-fill display-4 text-primary"></i>
-                    <h5 class="card-title">Reportes</h5>
-                    <p class="card-text">Consulta y exporta reportes detallados.</p>
-                    <a href="#" class="btn btn-primary">Ir a Reportes</a>
+                    <i class="bi bi-cash-coin display-4 text-primary"></i>
+                    <h5 class="card-title">Pretamos</h5>
+                    <p class="card-text">Consulta los prestamos del sistema.</p>
+                    <a href="prestamos/index.php" class="btn btn-primary">Aceptar</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-body">
-                    <i class="bi bi-bell-fill display-4 text-primary"></i>
-                    <h5 class="card-title">Notificaciones</h5>
-                    <p class="card-text">Consulta notificaciones recientes.</p>
-                    <a href="#" class="btn btn-primary">Ir a Notificaciones</a>
-                </div>
-            </div>
-        </div>
+
     </div>
     <br>
 
 
-    <br>
 
     <center>
 

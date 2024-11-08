@@ -14,10 +14,10 @@ class ClienteController
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function crearCliente($nombre, $apellido, $direccion, $telefono, $email)
+    public function crearCliente($cedula, $nombre, $apellido, $direccion, $telefono, $email)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO clientes (nombre, apellido, direccion, telefono, email) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$nombre, $apellido, $direccion, $telefono, $email]);
+        $stmt = $this->pdo->prepare("INSERT INTO clientes (cedula, nombre, apellido, direccion, telefono, email) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$cedula, $nombre, $apellido, $direccion, $telefono, $email]);
     }
 
     public function obtenerClientePorId($id)
@@ -27,10 +27,10 @@ class ClienteController
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function actualizarCliente($id, $nombre, $apellido, $direccion, $telefono, $email)
+    public function actualizarCliente($id, $cedula, $nombre, $apellido, $direccion, $telefono, $email)
     {
-        $stmt = $this->pdo->prepare("UPDATE clientes SET nombre = ?, apellido = ?, direccion = ?, telefono = ?, email = ? WHERE id = ?");
-        $stmt->execute([$nombre, $apellido, $direccion, $telefono, $email, $id]);
+        $stmt = $this->pdo->prepare("UPDATE clientes SET cedula = ?, nombre = ?, apellido = ?, direccion = ?, telefono = ?, email = ? WHERE id = ?");
+        $stmt->execute([$cedula, $nombre, $apellido, $direccion, $telefono, $email, $id]);
     }
 
     public function eliminarCliente($id)

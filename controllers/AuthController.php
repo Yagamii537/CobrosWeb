@@ -14,19 +14,22 @@ class AuthController
 
         $nombre = $_POST['nombre'];
         $password = $_POST['password'];
-        $hash = hash("sha256", $password);
+        $hash = hash("sha256", $password); // Genera el hash de la contraseña ingresada
 
-        $consulta = "SELECT * FROM empleado WHERE usuario=? AND clave=?";
+        // Consulta SQL para verificar usuario y contraseña
+        $consulta = "SELECT * FROM empleado WHERE usuario = :nombre AND clave = :hash";
         $stmt = $this->conexion->prepare($consulta);
-        $stmt->bind_param("ss", $nombre, $hash);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':hash', $hash);
         $stmt->execute();
-        $resultado = $stmt->get_result();
-        $filas = $resultado->fetch_assoc();
+
+        $filas = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($filas) {
-            $_SESSION['nombre'] = $nombre;
+            $_SESSION['nombre'] = $filas['usuario'];
             $_SESSION['rol'] = $filas['rol'];
 
+            // Redirección según el rol
             if ($filas['rol'] == 1) {
                 header('Location: ../views/principal.php');
             } elseif ($filas['rol'] == 2) {
@@ -39,7 +42,9 @@ class AuthController
             session_destroy();
             header('Location: ../views/login.php?error=credenciales');
         }
+        exit();
     }
+
 
     public function cerrarSesion()
     {

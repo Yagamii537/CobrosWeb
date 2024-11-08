@@ -9,7 +9,86 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Importar Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="../assets/css/estilos.css" rel="stylesheet">
+    <style>
+        /* Estilos para la pantalla de login */
+        .login-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-section,
+        .right-section {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .left-section {
+            background-color: #007bff;
+            /* Azul para el lado izquierdo */
+            color: white;
+            position: relative;
+        }
+
+        .right-section {
+            background-color: #f8f9fa;
+            /* Gris claro para el lado derecho */
+        }
+
+        /* Curva de separación más pronunciada */
+        .left-section::before {
+            content: '';
+            position: absolute;
+            right: -30%;
+            top: 0;
+            width: 160%;
+            height: 100%;
+            background-color: #007bff;
+            clip-path: ellipse(75% 100% at 100% 50%);
+            z-index: -1;
+        }
+
+        /* Estilos para el texto de bienvenida */
+        .left-section h1 {
+            font-size: 3rem;
+        }
+
+        /* Estilos para el formulario de login */
+        .login-form {
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-control {
+            padding-left: 2.5rem;
+        }
+
+        .form-group .bi {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary .bi,
+        .btn-secondary .bi {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 
 <body>

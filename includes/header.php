@@ -21,7 +21,11 @@ if ($validar == null || $validar == '') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Importar Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="../assets/css/estilos.css" rel="stylesheet"> <!-- Enlace al archivo de estilos externo -->
+
+    <!-- ! //!REDIRECCION DESDE LA RAIZ DEL SISTEMA, SE COLOCA EL NOMBRE DE LA CARPETA PRINCIPAL SEGUIDO DE LA RUTA PARA
+    !      //!EL CSS FUNCIONE EN TODO EL SISTEMA -->
+    <link href="/cobros/assets/css/estilos.css" rel="stylesheet"> <!-- Enlace al archivo de estilos externo -->
+
 </head>
 
 <body>
@@ -32,7 +36,7 @@ if ($validar == null || $validar == '') {
         </button>
         <h1>Sistema Cobros</h1>
         <div class="user-info d-none d-md-flex align-items-center">
-            <span>Usuario</span>
+            <span><?php echo isset($_SESSION['nombre']) ? $_SESSION['nombre'] : 'Usuario'; ?></span>
             <i class="bi bi-person-circle ml-2"></i>
             <a class="btn btn-light btn-sm ml-2" href="sesion/cerrarSesion.php">Cerrar sesión</a>
         </div>
@@ -40,11 +44,11 @@ if ($validar == null || $validar == '') {
 
     <!-- Barra lateral con módulos -->
     <div class="sidebar" id="sidebar">
-        <a href="#" class="d-flex align-items-center"><i class="bi bi-house mr-2"></i> Inicio</a>
-        <a href="#" class="d-flex align-items-center"><i class="bi bi-gear mr-2"></i> Configuración</a>
-        <a href="#" class="d-flex align-items-center"><i class="bi bi-people mr-2"></i> Usuarios</a>
-        <a href="#" class="d-flex align-items-center"><i class="bi bi-file-earmark-text mr-2"></i> Reportes</a>
-        <a href="#" class="d-flex align-items-center"><i class="bi bi-bell mr-2"></i> Notificaciones</a>
+        <a href="/cobros/views/principal.php" class="d-flex align-items-center"><i class="bi bi-house mr-2"></i> Inicio</a>
+
+        <a href="#" class="d-flex align-items-center"><i class="bi bi-people mr-2"></i> Clientes</a>
+        <a href="#" class="d-flex align-items-center"><i class="bi bi-cash-coin mr-2"></i> Prestamos</a>
+
     </div>
 
     <div class="content" id="content">
