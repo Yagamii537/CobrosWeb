@@ -1,0 +1,91 @@
+/* Archivo: assets/css/estilos.css */
+
+/* Estilos para la página principal */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Encabezado */
+.header {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+  z-index: 1;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+}
+
+/* Barra lateral colapsable */
+.sidebar {
+  background-color: #007bff;
+  color: white;
+  padding-top: 80px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-250px);
+}
+
+.sidebar a {
+  color: white;
+  padding: 15px;
+  display: block;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Área de contenido principal */
+.content {
+  margin-left: 250px;
+  margin-top: 60px;
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+  background-color: #f8f9fa;
+  transition: margin-left 0.3s ease;
+}
+
+.content.collapsed {
+  margin-left: 0;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-250px);
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .content.collapsed {
+    margin-left: 250px;
+  }
+}

@@ -9,12 +9,8 @@ if ($validar == null || $validar = '') {
 
     //TODO redireccionamiento a login si no esta logeado 
 
-    header("Location: includes/login.php");
+    header("Location: views/login.php");
     die();
-}else {
+} else {
     header("Location: views/principal.php");
 }
-
-
-
-?>
