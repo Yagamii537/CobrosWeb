@@ -5,7 +5,8 @@ include '../../controllers/PrestamoController.php';
 $prestamoController = new PrestamoController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $prestamoController->crearPrestamo($_POST['cliente_id'], $_POST['monto_total'], $_POST['interes'], $_POST['plazos'], $_POST['fecha_inicio'], $_POST['estado']);
+    // Crear el préstamo y registrar las cuotas
+    $prestamoController->crearPrestamo($_POST['cliente_id'], $_POST['monto_total'], $_POST['interes'], $_POST['plazos'], $_POST['fecha_inicio']);
     header("Location: index.php");
     exit();
 }

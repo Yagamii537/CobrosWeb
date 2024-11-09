@@ -49,7 +49,11 @@ $prestamos = $mostrar_todos
         </thead>
         <tbody>
             <?php foreach ($prestamos as $prestamo): ?>
-                <tr>
+                <?php
+                // Verificar si el préstamo tiene cuotas vencidas
+                $vencido = $prestamoController->tieneCuotasVencidas($prestamo['id']);
+                ?>
+                <tr class="<?php echo $vencido ? 'vencido' : ''; ?>">
                     <td><?php echo $prestamo['id']; ?></td>
                     <td><?php echo $prestamo['cliente_id']; ?></td>
                     <td><?php echo $prestamo['monto_total']; ?></td>
@@ -61,6 +65,7 @@ $prestamos = $mostrar_todos
                         <a href="editar.php?id=<?php echo $prestamo['id']; ?>" class="btn btn-success btn-sm">
                             <i class="bi bi-pencil-square"></i></a>
                         <a href="eliminar.php?id=<?php echo $prestamo['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este préstamo?');"><i class="bi bi-trash"></i></a>
+                        <a href="cuotas.php?prestamo_id=<?php echo $prestamo['id']; ?>" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

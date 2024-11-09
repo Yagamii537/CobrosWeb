@@ -89,3 +89,8 @@ body {
     margin-left: 250px;
   }
 }
+
+.vencido {
+  background-color: #f8d7da; /* Fondo rojo claro */
+  color: #721c24; /* Texto rojo oscuro */
+}

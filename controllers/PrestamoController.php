@@ -1,11 +1,14 @@
 <?php
+include_once 'CuotaController.php';
 class PrestamoController
 {
     private $pdo;
+    private $cuotaController;
 
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
+        $this->cuotaController = new CuotaController($pdo); // Instancia del controlador de cuotas
     }
 
     public function obtenerPrestamos()
@@ -16,10 +19,15 @@ class PrestamoController
 
     public function crearPrestamo($cliente_id, $monto_total, $interes, $plazos, $fecha_inicio)
     {
-        // Estado se asigna como 1 automáticamente en la creación
-        $estado = 1;
-        $stmt = $this->pdo->prepare("INSERT INTO prestamos (cliente_id, monto_total, interes, plazos, fecha_inicio, estado) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$cliente_id, $monto_total, $interes, $plazos, $fecha_inicio, $estado]);
+        // Insertar el préstamo en la base de datos
+        $stmt = $this->pdo->prepare("INSERT INTO prestamos (cliente_id, monto_total, interes, plazos, fecha_inicio, estado) VALUES (?, ?, ?, ?, ?, 1)");
+        $stmt->execute([$cliente_id, $monto_total, $interes, $plazos, $fecha_inicio]);
+
+        // Obtener el ID del préstamo recién creado
+        $prestamo_id = $this->pdo->lastInsertId();
+
+        // Registrar las cuotas para este préstamo
+        $this->cuotaController->registrarCuotas($prestamo_id, $monto_total, $plazos, $interes, $fecha_inicio);
     }
 
     public function obtenerPrestamoPorId($id)
@@ -52,5 +60,15 @@ class PrestamoController
     {
         $stmt = $this->pdo->prepare("DELETE FROM prestamos WHERE id = ?");
         $stmt->execute([$id]);
+    }
+
+    public function tieneCuotasVencidas($prestamo_id)
+    {
+        $stmt = $this->pdo->prepare("
+        SELECT COUNT(*) 
+        FROM cuotas 
+        WHERE prestamo_id = ? AND fecha_vencimiento < CURDATE() AND estado = 1");
+        $stmt->execute([$prestamo_id]);
+        return $stmt->fetchColumn() > 0; // Devuelve `true` si hay cuotas vencidas
     }
 }

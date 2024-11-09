@@ -46,8 +46,8 @@ if ($validar == null || $validar == '') {
     <div class="sidebar" id="sidebar">
         <a href="/cobros/views/principal.php" class="d-flex align-items-center"><i class="bi bi-house mr-2"></i> Inicio</a>
 
-        <a href="#" class="d-flex align-items-center"><i class="bi bi-people mr-2"></i> Clientes</a>
-        <a href="#" class="d-flex align-items-center"><i class="bi bi-cash-coin mr-2"></i> Prestamos</a>
+        <a href="/cobros/views/clientes/index.php" class="d-flex align-items-center"><i class="bi bi-people mr-2"></i> Clientes</a>
+        <a href="/cobros/views/prestamos/index.php" class="d-flex align-items-center"><i class="bi bi-cash-coin mr-2"></i> Prestamos</a>
 
     </div>
 
